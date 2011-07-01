@@ -30,13 +30,8 @@ module Gator
 
   class << self
 
-    def application
-      @application
-    end
-
-    def application=(app)
-      @application = app
-    end
+    attr_accessor :application
+    attr_accessor :base_dir
 
     def configuration
       application.configuration

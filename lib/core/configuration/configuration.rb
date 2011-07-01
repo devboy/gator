@@ -24,6 +24,7 @@ module Gator
     def load_project_configuration
       config_file = File.find_file_upwards("gator_config.rb") || File.join( ".gator","gator_config.rb")
       ConfigurationGenerator.new.create_configuration config_file unless File.exists? config_file
+      Gator.project.base_dir = File.dirname( File.dirname( config_file ) )
       load config_file
     end
 
