@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{gator}
-  s.version = "0.0.2.pre"
+  s.version = "0.0.3.pre"
 
   s.required_rubygems_version = Gem::Requirement.new("> 1.3.1") if s.respond_to? :required_rubygems_version=
   s.authors = ["Dominic Graefen"]
@@ -36,6 +36,7 @@ Gem::Specification.new do |s|
     "lib/core/configuration/configuration.rb",
     "lib/core/plugin.rb",
     "lib/core/project.rb",
+    "lib/core/project/layout.rb",
     "lib/core/project/project.rb",
     "lib/gator.rb",
     "test/helper.rb",
