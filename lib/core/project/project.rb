@@ -87,10 +87,6 @@ module Gator
       Gator::Project.project
     end
 
-#    def define_project(project)
-#      Gator::Project.project= project
-#    end
-
     def load_project
       pfile = Gator::Project.project_file
       if pfile.nil?
@@ -100,36 +96,6 @@ module Gator
         load pfile
       end
     end
-
-#    def define_project( project )
-#      @project = project
-#    end
-
-#    def project
-#      p "project"
-#      load_project unless @project
-#      p " @project=#{@project}"
-#      if @project.nil?
-#        Gator.shell.say "Project is not defined!\nMake sure to define a project in #{Gator::Project.project_file}",:red
-#        raise "ProjectNotDefined"
-#      end
-#      p " @project=#{@project}"
-#      @project
-#    end
-
-#    private
-
-#    def load_project
-#      load File.join(".gator","project.rb")
-#      p 'load_project'
-#      pfile = Gator::Project.project_file
-#      if pfile.nil?
-#        Gator.shell.say "This is not a project directory!\nPlease create a gator project first.", :red
-#        raise "NotInsideProjectDirectory"
-#      else
-#        load pfile
-#      end
-#    end
 
   end
 end

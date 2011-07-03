@@ -50,11 +50,11 @@ describe Gator::Command do
     Gator::Command.has?(@test_command_a.command_alias).should == true
   end
 
-  it "should return instance of TestCommandA by name" do
+  it "should return TestCommandA by name" do
     Gator::Command.get(@test_command_a.command_name).should == @test_command_a
   end
 
-  it "should return instance of TestCommandA by alias" do
+  it "should return TestCommandA by alias" do
     Gator::Command.get(@test_command_a.command_alias).should == @test_command_a
   end
 
