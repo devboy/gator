@@ -1,49 +1,40 @@
+require File.dirname(__FILE__) + '/../../../lib/core/project'
+require File.dirname(__FILE__) + '/../../../lib/core/configuration'
+
 module Gator
-
-  class Application
-
-    def initialize
-      self
+  def self.set_argv(args)
+    ARGV.length.times do |i|
+      ARGV.delete_at i
     end
-
-    def execute( args )
-      configuration.load_configuration
+    args.length.times do |i|
+      ARGV[i] = args[i]
     end
-
-    def configuration
-      @configuration ||= Configuration.new
-    end
-
-    def project
-      @project
-    end
-
-    def project=( proj )
-      @project= proj
-    end
-
-    def shell
-      @shell ||= Shell.new
-    end
-
   end
 
+  module CLI
+    class Application
+
+      def initialize
+        self
+      end
+
+      def execute(args)
+        raise "No command specified." if args.empty?
+        command = args.shift
+        raise "Command: \"#{command}\" could not be found." unless Gator::Command.has?(command)
+        args << "--help" if args.empty?
+        Gator::Command.get(command).start args
+      end
+
+      def shell
+        @shell ||= Shell.new
+      end
+
+    end
+  end
   class << self
 
     attr_accessor :application
-    attr_accessor :base_dir
-
-    def configuration
-      application.configuration
-    end
-
-    def project
-      application.project
-    end
-
-    def project=(proj)
-      application.project= proj
-    end
 
     def shell
       application.shell
@@ -51,6 +42,5 @@ module Gator
 
   end
 
-  self.application= Application.new
-
+  self.application= Gator::CLI::Application.new
 end

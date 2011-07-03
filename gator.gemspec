@@ -39,8 +39,8 @@ Gem::Specification.new do |s|
     "lib/core/project/layout.rb",
     "lib/core/project/project.rb",
     "lib/gator.rb",
-    "test/helper.rb",
-    "test/test_gator.rb"
+    "command/helper.rb",
+    "command/test_gator.rb"
   ]
   s.homepage = %q{http://github.com/devboy/gator}
   s.licenses = ["MIT"]

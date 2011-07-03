@@ -2,4 +2,3 @@
 *.iml
 Gemfile.lock
 *.gem
-.gator
