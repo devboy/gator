@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{gator}
-  s.version = "0.0.10.pre"
+  s.version = "0.0.11.pre"
 
   s.required_rubygems_version = Gem::Requirement.new("> 1.3.1") if s.respond_to? :required_rubygems_version=
   s.authors = ["Dominic Graefen"]
-  s.date = %q{2011-07-04}
+  s.date = %q{2011-07-05}
   s.default_executable = %q{gator}
   s.description = %q{gator - the friendly code-generator}
   s.email = %q{dominic.graefen@gmail.com}
@@ -29,11 +29,16 @@ Gem::Specification.new do |s|
     "bin/gator",
     "gator.gemspec",
     "lib/gator.rb",
-    "lib/gator/commands/command.rb",
+    "lib/gator/command.rb",
+    "lib/gator/commands.rb",
+    "lib/gator/commands/generate_command.rb",
     "lib/gator/commands/project_command.rb",
     "lib/gator/config.rb",
-    "lib/gator/project/layout.rb",
-    "lib/gator/project/project.rb",
+    "lib/gator/generator.rb",
+    "lib/gator/generators.rb",
+    "lib/gator/generators/ClassTemplate.as.tt",
+    "lib/gator/generators/as3_generator.rb",
+    "lib/gator/project.rb",
     "lib/gator/runner.rb",
     "lib/gator/util.rb",
     "spec/spec_helper.rb"
