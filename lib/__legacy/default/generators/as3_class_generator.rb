@@ -2,7 +2,7 @@ require "thor/actions"
 module Gator
   module AS3
     class AS3ClassGenerator < Gator::Generators::Base
-      include Gator::Project, Thor::Actions
+      include Gator::ProjectCommand, Thor::Actions
 
       specify "as3class", "as3c"
 

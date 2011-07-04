@@ -1,4 +1,4 @@
-require File.dirname(__FILE__) + '/runner'
+require File.dirname(__FILE__) + '/../runner'
 
 module Gator
   class Command < Thor

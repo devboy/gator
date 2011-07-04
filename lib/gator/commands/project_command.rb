@@ -1,14 +1,14 @@
 require "thor"
 require "thor/actions"
 require "fileutils"
-require File.dirname(__FILE__) + '/util'
+require File.dirname(__FILE__) + '/../util'
 require File.dirname(__FILE__) + '/command'
 
 module Gator
-  class Project < Command
+  class ProjectCommand < Command
     include Thor::Actions
 
-    register_command "project", "project TASK", "Set of tasks to manage project templates.", [:p]
+    register_command "project", "project TASK", "Set of tasks to manage project templates.", ["p"]
 
     def self.source_root
       Gator::Util.project_template_root
@@ -20,6 +20,7 @@ module Gator
       template ||= File.expand_path( File.dirname(entries.first) ).split(File::SEPARATOR).last
       empty_directory template_dir(template)
       FileUtils.cp_r entries, template_dir(template)
+      create_empty_directory_files template_dir(template)
     end
 
     desc "project uninstall TEMPLATE_NAME", "Uninstall a project template."
@@ -34,7 +35,7 @@ module Gator
 
     desc "project wipe", "Delete all project templates."
     def wipe
-      template_root_entries.each { |e| FileUtils.rm_r e }
+      template_root_entries(true).each { |e| FileUtils.rm_r e }
     end
 
     desc "project list [SEARCH]", "Lists project templates."
@@ -46,6 +47,12 @@ module Gator
     end
 
     private
+
+    def create_empty_directory_files( dir )
+      Dir.glob( File.join( dir, "**", "*" ) ).each {|f|
+        create_file File.join(f,".empty_directory"), ".empty_directory" if File.directory?(f) && Dir.entries(f).length == 2
+      }
+    end
 
     def template_dir( template )
       File.join( Gator::Util.project_template_root, template )
@@ -59,8 +66,8 @@ module Gator
       entries
     end
 
-    def template_root_entries
-      directory_entries Gator::Util.project_template_root, false
+    def template_root_entries( join_with_dir=false )
+      directory_entries Gator::Util.project_template_root, join_with_dir
     end
 
   end
