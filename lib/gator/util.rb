@@ -49,7 +49,7 @@ module Gator
       gatorfile = nil
       Pathname.new(path).ascend do |dir|
         gatorfile = gator_files_for(dir).map { |g| Dir[g] }.flatten.first
-        break unless gatorfile.nil?
+        break unless gatorfile.nil? || File.directory?(gatorfile)
       end
       gatorfile
     end
