@@ -1,5 +1,39 @@
 module Gator
   module Project
+
+    def self.project
+      @project
+    end
+
+    def self.project=(project)
+      @project = project
+    end
+
+    def project(project= nil)
+      Project.project = project unless project.nil?
+      $stderr.puts "WARNING: No project definition found."
+      Project.project
+    end
+
+    class ProjectBase
+
+      attr_accessor :name, :layout
+
+      def initialize
+        @name = ""
+        @layout = Layout.default
+      end
+
+      def path(*args)
+        File.join(Gator::Util.find_gator_project, layout.expand(*args))
+      end
+
+      def options
+        @options ||= {}
+      end
+
+    end
+
     # THIS CLASS IS STOLEN FROM BUILDR
 
     # Symbolic mapping for directory layout.  Used for both the default and custom layouts.

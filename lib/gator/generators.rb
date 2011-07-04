@@ -1,0 +1,1 @@
+Dir.glob( File.join( File.dirname(__FILE__), "generators", "*.rb" ) ).each { |rb| require rb }

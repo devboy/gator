@@ -1,8 +1,7 @@
 require "thor"
 require "thor/actions"
 require "fileutils"
-require File.dirname(__FILE__) + '/../util'
-require File.dirname(__FILE__) + '/command'
+#require "gator/command"
 
 module Gator
   class ProjectCommand < Command

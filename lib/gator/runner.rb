@@ -1,7 +1,6 @@
 require 'thor'
 require 'thor/group'
 require 'thor/actions'
-require File.dirname(__FILE__) + '/util'
 
 module Gator
   class Runner < Thor
