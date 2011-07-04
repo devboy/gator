@@ -1,1 +1,0 @@
-project Gator::Project::Base.new "<%= name %>"

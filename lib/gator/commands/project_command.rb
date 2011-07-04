@@ -14,7 +14,7 @@ module Gator
       Gator::Util.project_template_root
     end
 
-    desc "project install DIRECTORY TEMPLATE_NAME", "Install a project template."
+    desc "project install NAME TEMPLATE_NAME", "Install a project template."
     def install( dir, template=nil )
       entries = directory_entries dir
       template ||= File.expand_path( File.dirname(entries.first) ).split(File::SEPARATOR).last
@@ -28,9 +28,10 @@ module Gator
       FileUtils.rm_r template_dir(template)
     end
 
-    desc "project new DIRECTORY TEMPLATE_NAME", "Create a new project by template."
-    def new( dir, template )
-      directory template_dir(template), File.expand_path( dir )
+    desc "project new NAME TEMPLATE_NAME", "Create a new project by template."
+    def new( name, template )
+      @project_name = name
+      directory template_dir(template), File.expand_path( name )
     end
 
     desc "project wipe", "Delete all project templates."
@@ -45,6 +46,14 @@ module Gator
       entries.each {|e| say "  #{e}" }
       say "No templates found.", :blue if entries.empty?
     end
+
+    no_tasks {
+
+      def project_name
+        @project_name
+      end
+
+    }
 
     private
 
