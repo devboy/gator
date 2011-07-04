@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{gator}
-  s.version = "0.0.8.pre"
+  s.version = "0.0.9.pre"
 
   s.required_rubygems_version = Gem::Requirement.new("> 1.3.1") if s.respond_to? :required_rubygems_version=
   s.authors = ["Dominic Graefen"]
@@ -28,31 +28,14 @@ Gem::Specification.new do |s|
     "VERSION",
     "bin/gator",
     "gator.gemspec",
-    "lib/__legacy/core.rb",
-    "lib/__legacy/core/cli.rb",
-    "lib/__legacy/core/cli/application.rb",
-    "lib/__legacy/core/cli/shell.rb",
-    "lib/__legacy/core/command.rb",
-    "lib/__legacy/core/command/command.rb",
-    "lib/__legacy/core/configuration.rb",
-    "lib/__legacy/core/configuration/configuration.rb",
-    "lib/__legacy/core/project.rb",
-    "lib/__legacy/core/project/layout.rb",
-    "lib/__legacy/core/project/project.rb",
-    "lib/__legacy/default.rb",
-    "lib/__legacy/default/commands/generator_command.rb",
-    "lib/__legacy/default/commands/new_command.rb",
-    "lib/__legacy/default/commands/new_template/.gator/project.rb.tt",
-    "lib/__legacy/default/generators/AS3ClassTemplate.as.tt",
-    "lib/__legacy/default/generators/as3_class_generator.rb",
-    "lib/__legacy/gator.rb",
     "lib/gator.rb",
     "lib/gator/commands/command.rb",
     "lib/gator/commands/project_command.rb",
+    "lib/gator/config.rb",
+    "lib/gator/project/layout.rb",
+    "lib/gator/project/project.rb",
     "lib/gator/runner.rb",
     "lib/gator/util.rb",
-    "spec/core/command/command_spec.rb",
-    "spec/core/project/project_spec.rb",
     "spec/spec_helper.rb"
   ]
   s.homepage = %q{http://github.com/devboy/gator}
