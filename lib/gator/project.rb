@@ -11,7 +11,7 @@ module Gator
 
     def project(project= nil)
       Project.project = project unless project.nil?
-      $stderr.puts "WARNING: No project definition found."
+      $stderr.puts "WARNING: No project definition found." if Project.project.nil?
       Project.project
     end
 

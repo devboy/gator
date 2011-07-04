@@ -1,11 +1,12 @@
 require "thor"
 require "thor/actions"
 require "fileutils"
-#require "gator/command"
+require "gator/command"
 
 module Gator
   class ProjectCommand < Command
     include Thor::Actions
+    include Gator::Configuration
 
     register_command "project", "project TASK", "Set of tasks to manage project templates.", ["p"]
 
@@ -50,6 +51,10 @@ module Gator
 
       def project_name
         @project_name
+      end
+
+      def configuration
+        config
       end
 
     }
