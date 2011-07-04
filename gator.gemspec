@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{gator}
-  s.version = "0.0.5.pre"
+  s.version = "0.0.6.pre"
 
   s.required_rubygems_version = Gem::Requirement.new("> 1.3.1") if s.respond_to? :required_rubygems_version=
   s.authors = ["Dominic Graefen"]
-  s.date = %q{2011-07-03}
+  s.date = %q{2011-07-04}
   s.default_executable = %q{gator}
   s.description = %q{gator - the friendly code-generator}
   s.email = %q{dominic.graefen@gmail.com}
@@ -28,24 +28,29 @@ Gem::Specification.new do |s|
     "VERSION",
     "bin/gator",
     "gator.gemspec",
-    "lib/core.rb",
-    "lib/core/cli.rb",
-    "lib/core/cli/application.rb",
-    "lib/core/cli/shell.rb",
-    "lib/core/command.rb",
-    "lib/core/command/command.rb",
-    "lib/core/configuration.rb",
-    "lib/core/configuration/configuration.rb",
-    "lib/core/project.rb",
-    "lib/core/project/layout.rb",
-    "lib/core/project/project.rb",
-    "lib/default.rb",
-    "lib/default/commands/generator_command.rb",
-    "lib/default/commands/new_command.rb",
-    "lib/default/commands/new_template/.gator/project.rb.tt",
-    "lib/default/generators/AS3ClassTemplate.as.tt",
-    "lib/default/generators/as3_class_generator.rb",
+    "lib/__legacy/core.rb",
+    "lib/__legacy/core/cli.rb",
+    "lib/__legacy/core/cli/application.rb",
+    "lib/__legacy/core/cli/shell.rb",
+    "lib/__legacy/core/command.rb",
+    "lib/__legacy/core/command/command.rb",
+    "lib/__legacy/core/configuration.rb",
+    "lib/__legacy/core/configuration/configuration.rb",
+    "lib/__legacy/core/project.rb",
+    "lib/__legacy/core/project/layout.rb",
+    "lib/__legacy/core/project/project.rb",
+    "lib/__legacy/default.rb",
+    "lib/__legacy/default/commands/generator_command.rb",
+    "lib/__legacy/default/commands/new_command.rb",
+    "lib/__legacy/default/commands/new_template/.gator/project.rb.tt",
+    "lib/__legacy/default/generators/AS3ClassTemplate.as.tt",
+    "lib/__legacy/default/generators/as3_class_generator.rb",
+    "lib/__legacy/gator.rb",
     "lib/gator.rb",
+    "lib/gator/command.rb",
+    "lib/gator/project.rb",
+    "lib/gator/runner.rb",
+    "lib/gator/util.rb",
     "spec/core/command/command_spec.rb",
     "spec/core/project/project_spec.rb",
     "spec/spec_helper.rb"
