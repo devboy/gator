@@ -1,10 +1,14 @@
 require "thor"
+require "thor/actions"
 require "fileutils"
 require File.dirname(__FILE__) + '/util'
+require File.dirname(__FILE__) + '/command'
 
 module Gator
-  class Project < Thor
+  class Project < Command
     include Thor::Actions
+
+    register_command "project", "project TASK", "Set of tasks to manage project templates.", [:p]
 
     def self.source_root
       Gator::Util.project_template_root
