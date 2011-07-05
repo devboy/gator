@@ -1,10 +1,12 @@
 require "thor/group"
+require "thor/actions"
 
 module Gator
-  class Generator < Thor
-    def self.register_generator( name, usage, description, mappings=[], options={} )
-      Gator::GenerateCommand.register self, name, usage,description,options
-      Gator::GenerateCommand.map mappings => name
+  class Generator < Thor::Group
+    include Thor::Actions
+    def self.register_generator( target, name, usage, description, mappings=[], options={} )
+      target.register self, name, usage,description,options
+      target.map mappings => name
     end
   end
 end
