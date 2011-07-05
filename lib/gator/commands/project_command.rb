@@ -2,6 +2,7 @@ require "thor"
 require "thor/actions"
 require "fileutils"
 require "gator/command"
+require "gator/config"
 
 module Gator
   class ProjectCommand < Command
