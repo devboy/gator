@@ -1,9 +1,9 @@
 module Gator
   module AS3
-    class ClassGenerator < Generator
+    class ClassGenerator < Task
       include Gator::Project
 
-      register_generator Gator::AS3::GeneratorCollection, "klass", "generate as3 klass CLASS_NAME", "Creates AS3 class."
+      register_task Gator::AS3::GeneratorCollection, "klass", "generate as3 klass CLASS_NAME", "Creates AS3 class."
 
       argument :name
 
