@@ -1,10 +1,15 @@
 module Gator
   module AS3
+
     class GeneratorCollection < Gator::Command
-      register_command Gator::GenerateCommand, "as3", "generate as3 GENERATOR", "Generators for AS3"
+      define :on => Gator::GenerateCommand, :as => "as3",
+             :usage => "generate as3 GENERATOR", :description => "Generators for AS3."
     end
+
     class TestGeneratorCollection < Gator::Command
-      register_command GeneratorCollection, "test", "generate as3 test GENERATOR", "TestGenerators for AS3"
+      define :on => GeneratorCollection, :as => "test",
+             :usage => "generate as3 test GENERATOR", :description => "TestGenerators for AS3."
     end
+
   end
 end

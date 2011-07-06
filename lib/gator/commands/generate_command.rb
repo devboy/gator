@@ -2,6 +2,7 @@ require 'thor/actions'
 
 module Gator
   class GenerateCommand < Command
-    register_command Gator::Runner, "generate", "generate TASK", "Generators.", ["g"]
+    define :on => Gator::Runner, :as => "generate", :short => "g",
+           :usage => "generate TASK", :description => "Generators."
   end
 end

@@ -3,9 +3,10 @@ module Gator
     class ClassTestGenerator < Task
       include Gator::Project
 
-      register_task Gator::AS3::TestGeneratorCollection, "klass", "generate as3 test klass CLASS_NAME", "Creates AS3 class test."
+      define :on => Gator::AS3::TestGeneratorCollection, :as => "klass",
+             :usage => "generate as3 test klass CLASS_NAME", :description => "Creates AS3 class test."
 
-      argument :name
+      argument :classname
 
       def self.source_root
         File.dirname __FILE__
@@ -13,7 +14,7 @@ module Gator
 
       def generate
         src = project.path(:src, :test, :as3)
-        @package_name, @class_name = split_class_name(name)
+        @package_name, @class_name = split_class_name(classname)
         @class_name += "Test"
         src = File.join(src, @package_name.split(".").join(File::SEPARATOR)) unless @package_name == ""
         template "ClassTemplate.as.tt", File.join(src, "#{@class_name}.as")
