@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{gator}
-  s.version = "0.0.12.pre"
+  s.version = "0.0.13.pre"
 
   s.required_rubygems_version = Gem::Requirement.new("> 1.3.1") if s.respond_to? :required_rubygems_version=
   s.authors = ["Dominic Graefen"]
@@ -34,7 +34,6 @@ Gem::Specification.new do |s|
     "lib/gator/commands/generate_command.rb",
     "lib/gator/commands/project_command.rb",
     "lib/gator/config.rb",
-    "lib/gator/generator.rb",
     "lib/gator/generators.rb",
     "lib/gator/generators/as3/ClassTemplate.as.tt",
     "lib/gator/generators/as3/class_generator.rb",
@@ -43,6 +42,7 @@ Gem::Specification.new do |s|
     "lib/gator/generators/as3/test/class_test_generator.rb",
     "lib/gator/project.rb",
     "lib/gator/runner.rb",
+    "lib/gator/task.rb",
     "lib/gator/util.rb",
     "spec/spec_helper.rb"
   ]
