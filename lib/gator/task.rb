@@ -10,5 +10,6 @@ module Gator
       d[:on].register self, d[:as], d[:usage], d[:description], d[:options] || {}
       d[:on].map [ d[:short] ] => d[:as] unless d[:short].nil?
     end
+
   end
 end
