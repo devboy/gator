@@ -4,9 +4,12 @@ require "thor/actions"
 module Gator
   class Task < Thor::Group
     include Thor::Actions
-    def self.register_task( target, name, usage, description, mappings=[], options={} )
-      target.register self, name, usage,description,options
-      target.map mappings => name
+
+    def self.define( definition )
+      @definition = d = definition
+      d[:on].register self, d[:as], d[:usage], d[:description], d[:options] || {}
+      d[:on].map [ d[:short] ] => d[:as] unless d[:short].nil?
     end
+
   end
 end

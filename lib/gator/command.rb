@@ -1,9 +1,10 @@
 module Gator
   class Command < Thor
 
-    def self.register_command(target, name, usage, description, mappings=[], options={})
-      target.register self, name, usage, description, options
-      target.map mappings => name
+    def self.define( definition )
+      @definition = d = definition
+      d[:on].register self, d[:as], d[:usage], d[:description], d[:options] || {}
+      d[:on].map [ d[:short] ] => d[:as] unless d[:short].nil?
     end
 
     #The following lines fix a bug in thor see: https://github.com/wycats/thor/pull/150
