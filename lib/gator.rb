@@ -1,7 +1,7 @@
 require 'gator/config'
 require 'gator/project'
 require 'gator/util'
-require 'gator/generator'
+require 'gator/task'
 require 'gator/command'
 require 'gator/runner'
 require 'gator/commands'

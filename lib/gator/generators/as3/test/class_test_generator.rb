@@ -1,9 +1,9 @@
 module Gator
   module AS3
-    class ClassTestGenerator < Generator
+    class ClassTestGenerator < Task
       include Gator::Project
 
-      register_generator Gator::AS3::TestGeneratorCollection, "klass", "generate as3 test klass CLASS_NAME", "Creates AS3 class test."
+      register_task Gator::AS3::TestGeneratorCollection, "klass", "generate as3 test klass CLASS_NAME", "Creates AS3 class test."
 
       argument :name
 
