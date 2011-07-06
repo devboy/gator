@@ -9,7 +9,7 @@ module Gator
     include Thor::Actions
     include Gator::Configuration
 
-    register_command "project", "project TASK", "Set of tasks to manage project templates.", ["p"]
+    register_command Gator::Runner, "project", "project TASK", "Set of tasks to manage project templates.", ["p"]
 
     def self.source_root
       Gator::Util.project_template_root
