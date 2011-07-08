@@ -1,6 +1,6 @@
 = gator
 
-Description goes here.
+gator - the friendly code generator
 
 == Contributing to gator
  
