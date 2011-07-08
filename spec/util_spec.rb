@@ -1,5 +1,5 @@
-require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
-
+#require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
+#
 #require "fileutils"
 #
 #describe Gator::Project::Base do
@@ -25,6 +25,8 @@ require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
 #    FileUtils.rm_r @project_dir
 #    @project_dir = nil
 #  end
+#
+#  value(something).shouldEqual(somethingElse).orElse("it doesn't work")
 #
 #  it "should detect being inside a project directory" do
 #    Gator::Project.is_project_directory(@project_dir).should == true
