@@ -3,10 +3,12 @@ module Gator
     class ClassGenerator < Task
       include Gator::Project
 
-      define :on => Gator::AS3::GeneratorCollection, :as => "klass",
+      define :command => "klass",
              :usage => "generate as3 klass CLASS_NAME", :description => "Creates AS3 class."
 
       argument :classname
+
+      class_option :test, :default => false
 
       def self.source_root
         File.dirname __FILE__
@@ -17,8 +19,11 @@ module Gator
         @package_name, @class_name = split_class_name(classname)
         src = File.join(src, @package_name.split(".").join(File::SEPARATOR)) unless @package_name == ""
         template "ClassTemplate.as.tt", File.join(src, "#{@class_name}.as")
+      end
 
-        invoke Gator::AS3::TestGeneratorCollection, "klass"
+      def generate_test
+        return unless options[:test]
+        invoke parent.get_subcommand("test", "klass")
       end
 
       no_tasks {

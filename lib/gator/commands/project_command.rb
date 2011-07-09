@@ -9,7 +9,7 @@ module Gator
     include Thor::Actions
     include Gator::Configuration
 
-    define :on => Gator::Runner, :as => "project", :short => "p",
+    define :command => "project", :short => "p",
            :usage => "project TASK", :description => "Set of tasks to manage project templates."
 
     def self.source_root
