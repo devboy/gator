@@ -1,1 +1,5 @@
-Dir.glob( File.join( File.dirname(__FILE__), "commands", "*.rb" ) ).each { |rb| require rb }
+require File.dirname(__FILE__) + '/commands/project'
+require File.dirname(__FILE__) + '/commands/generate'
+
+Gator::Runner.register_subcommand Gator::ProjectCommand
+Gator::Runner.register_subcommand Gator::GenerateCommand
