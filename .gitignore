@@ -2,3 +2,4 @@
 *.iml
 Gemfile.lock
 *.gem
+test/report
