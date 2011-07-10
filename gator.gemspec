@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{gator}
-  s.version = "0.0.14.pre"
+  s.version = "0.0.15.pre"
 
   s.required_rubygems_version = Gem::Requirement.new("> 1.3.1") if s.respond_to? :required_rubygems_version=
   s.authors = ["Dominic Graefen"]
-  s.date = %q{2011-07-06}
+  s.date = %q{2011-07-10}
   s.default_executable = %q{gator}
   s.description = %q{gator - the friendly code-generator}
   s.email = %q{dominic.graefen@gmail.com}
@@ -34,17 +34,13 @@ Gem::Specification.new do |s|
     "lib/gator/commands/generate.rb",
     "lib/gator/commands/project.rb",
     "lib/gator/config.rb",
-    "lib/gator/generators.rb",
-    "lib/gator/generators/as3/ClassTemplate.as.tt",
-    "lib/gator/generators/as3/class_generator.rb",
-    "lib/gator/generators/as3/collections.rb",
-    "lib/gator/generators/as3/test/ClassTemplate.as.tt",
-    "lib/gator/generators/as3/test/class_test_generator.rb",
     "lib/gator/project.rb",
     "lib/gator/runner.rb",
     "lib/gator/task.rb",
     "lib/gator/util.rb",
-    "spec/spec_helper.rb"
+    "spec/fixtures/empty_gator_project/gator.rb",
+    "spec/spec_helper.rb",
+    "spec/util_spec.rb"
   ]
   s.homepage = %q{http://github.com/devboy/gator}
   s.licenses = ["MIT"]
@@ -58,12 +54,14 @@ Gem::Specification.new do |s|
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
       s.add_runtime_dependency(%q<thor>, ["~> 0.14.6"])
       s.add_development_dependency(%q<rspec>, ["~> 2.3.0"])
+      s.add_development_dependency(%q<ci_reporter>, ["~> 1.6.5"])
       s.add_development_dependency(%q<bundler>, ["~> 1.0.0"])
       s.add_development_dependency(%q<jeweler>, ["~> 1.6.2"])
       s.add_development_dependency(%q<rcov>, [">= 0"])
     else
       s.add_dependency(%q<thor>, ["~> 0.14.6"])
       s.add_dependency(%q<rspec>, ["~> 2.3.0"])
+      s.add_dependency(%q<ci_reporter>, ["~> 1.6.5"])
       s.add_dependency(%q<bundler>, ["~> 1.0.0"])
       s.add_dependency(%q<jeweler>, ["~> 1.6.2"])
       s.add_dependency(%q<rcov>, [">= 0"])
@@ -71,6 +69,7 @@ Gem::Specification.new do |s|
   else
     s.add_dependency(%q<thor>, ["~> 0.14.6"])
     s.add_dependency(%q<rspec>, ["~> 2.3.0"])
+    s.add_dependency(%q<ci_reporter>, ["~> 1.6.5"])
     s.add_dependency(%q<bundler>, ["~> 1.0.0"])
     s.add_dependency(%q<jeweler>, ["~> 1.6.2"])
     s.add_dependency(%q<rcov>, [">= 0"])
