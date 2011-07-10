@@ -68,7 +68,7 @@ module Gator
     include ActAsCommand
     include ActAsCommandCollection
 
-      #The following lines fix a bug in thor see: https://github.com/wycats/thor/pull/150
+    #The following lines fix a bug in thor see: https://github.com/wycats/thor/pull/150
     class << self
       def register(klass, subcommand_name, usage, description, options={})
         if klass <= Thor::Group
