@@ -38,8 +38,13 @@ Gem::Specification.new do |s|
     "lib/gator/runner.rb",
     "lib/gator/task.rb",
     "lib/gator/util.rb",
+    "spec/command_spec.rb",
+    "spec/config_spec.rb",
     "spec/fixtures/empty_gator_project/gator.rb",
+    "spec/project_spec.rb",
+    "spec/runner_spec.rb",
     "spec/spec_helper.rb",
+    "spec/task_spec.rb",
     "spec/util_spec.rb"
   ]
   s.homepage = %q{http://github.com/devboy/gator}

@@ -34,4 +34,27 @@ describe Gator::Util do
     Gator::Util.find_gator_project(sub_dir).should == project_dir
   end
 
+  it "should find the gator.rb file from project base directory" do
+    project_dir = File.expand_path(File.dirname(__FILE__) + '/fixtures/empty_gator_project')
+    file = File.join(project_dir, "gator.rb")
+    Gator::Util.find_gator_project_file(project_dir).should == file
+  end
+
+  it "should find the gator.rb file from a project subdirectory" do
+    project_dir = File.expand_path(File.dirname(__FILE__) + '/fixtures/empty_gator_project')
+    sub_dir = File.expand_path(File.dirname(__FILE__) + '/fixtures/empty_gator_project/sub_dir')
+    file = File.join(project_dir, "gator.rb")
+    Gator::Util.find_gator_project_file(sub_dir).should == file
+  end
+
+  it "should not find a gator project in a project without gator.rb from the its base directory" do
+    project_dir = File.expand_path(File.dirname(__FILE__) + '/fixtures/no_gator_file')
+    Gator::Util.find_gator_project(project_dir).should == nil
+  end
+
+  it "should not find a gator project in a project without gator.rb from the a subdirectory" do
+    project_dir = File.expand_path(File.dirname(__FILE__) + '/fixtures/no_gator_file/subdir')
+    Gator::Util.find_gator_project(project_dir).should == nil
+  end
+
 end
