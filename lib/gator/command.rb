@@ -65,8 +65,12 @@ module Gator
       end
 
       def resolve_subcommand(command,fallback=nil)
+
         parent_klass = self
         klass = parent_klass.get_subcommand *command
+
+        return klass unless klass.nil?
+
         while parent_klass.parent
           parent_klass = parent_klass.parent
           klass = parent_klass.get_subcommand *command
