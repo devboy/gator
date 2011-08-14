@@ -28,6 +28,11 @@ module Gator
       nil
     end
 
+    def resolve_subcommand(command,fallback=nil)
+      return nil unless parent
+      parent.resolve_subcommand(command,fallback)
+    end
+
   end
 
   module ActAsCommandCollection
@@ -51,13 +56,24 @@ module Gator
       end
 
       def get_subcommand(*args)
-        arg = args.shift
-        klass = subcommand_classes[arg.to_s]
-        until args.empty? do
-          arg = args.shift
+        klass = self
+        args.each do |arg|
+          return nil unless klass.subcommand_classes.has_key? arg
           klass = klass.subcommand_classes[arg]
         end
         klass
+      end
+
+      def resolve_subcommand(command,fallback=nil)
+        parent_klass = self
+        klass = parent_klass.get_subcommand *command
+        while parent_klass.parent
+          parent_klass = parent_klass.parent
+          klass = parent_klass.get_subcommand *command
+          return klass unless klass.nil?
+        end
+
+        resolve_subcommand fallback if fallback
       end
 
     end
