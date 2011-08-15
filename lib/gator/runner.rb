@@ -13,7 +13,8 @@ module Gator
 
     desc "version", "Show Gator version"
     def version
-      say "Gator --pre"
+      version_file = File.dirname(__FILE__) + '/../../VERSION'
+      say File.exist?(version_file) ? File.read(version_file) : ""
     end
 
   end
