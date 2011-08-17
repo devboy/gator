@@ -1,2 +1,1 @@
-require 'generators/generator'
-require 'generators/template_generator'
+require File.dirname(__FILE__) + '/generators/generator'
