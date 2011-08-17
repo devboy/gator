@@ -24,6 +24,10 @@ module Gator
       self.class.parent
     end
 
+    def definition
+      self.class.definition
+    end
+
     def get_subcommand(*args)
       nil
     end
