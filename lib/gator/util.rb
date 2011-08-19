@@ -29,6 +29,10 @@ module Gator
       File.join(gator_root, "templates", "projects")
     end
 
+    def self.generator_template_root
+      File.join(gator_root, "templates", "generators" )
+    end
+
     def self.load_rubyfile(path, content=nil, debug=false)
       content ||= File.binread(path)
 

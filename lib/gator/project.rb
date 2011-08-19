@@ -32,6 +32,10 @@ module Gator
         @options ||= {}
       end
 
+      def template_roots
+        @template_roots ||= []
+      end
+
     end
 
     # THIS CLASS IS STOLEN FROM BUILDR
