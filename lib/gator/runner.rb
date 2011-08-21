@@ -6,11 +6,6 @@ module Gator
   class Runner < Command
     include Thor::Actions
 
-    def self.start
-      Gator::Util.initialize_files
-      super
-    end
-
     desc "version", "Show Gator version"
     def version
       version_file = File.dirname(__FILE__) + '/../../VERSION'

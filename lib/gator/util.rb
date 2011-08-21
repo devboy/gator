@@ -5,8 +5,9 @@ require "pathname"
 
 module Gator
   module Sandbox
-    extend Gator::Configuration
-    extend Gator::Project
+    def self.gator
+      Gator.application.configuration
+    end
   end
   class Util
     def self.gator_files
