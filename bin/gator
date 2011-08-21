@@ -1,5 +1,4 @@
 #!/usr/bin/env ruby
-require "rubygems"
-require "gator"
+require File.dirname(__FILE__) + "/../lib/gator"
 
 Gator::Runner.start
