@@ -1,4 +1,3 @@
-require File.dirname(__FILE__) + '/gator/config'
 require File.dirname(__FILE__) + '/gator/configuration'
 require File.dirname(__FILE__) + '/gator/project'
 require File.dirname(__FILE__) + '/gator/util'

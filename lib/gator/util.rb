@@ -6,7 +6,7 @@ require "pathname"
 module Gator
   module Sandbox
     def self.gator
-      Gator.application.configuration
+      Gator.application
     end
   end
   class Util

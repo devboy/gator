@@ -1,11 +1,6 @@
-module Gator
+require 'singleton'
 
-  class << self
-    @@application = nil
-    def application
-      @@application ||= Application.new
-    end
-  end
+module Gator
 
   class GatorConfiguration
     include Gator::Configuration::ActAsConfiguration
@@ -16,7 +11,12 @@ module Gator
 
   end
 
+  def self.application
+    Application.instance()
+  end
+
   class Application
+    include Singleton
 
     def initialize
       Gator::Util.initialize_files
