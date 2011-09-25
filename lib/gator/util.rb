@@ -5,12 +5,17 @@ require "pathname"
 
 module Gator
   module Sandbox
-    extend Gator::Configuration
-    extend Gator::Project
+    def self.gator
+      Gator.application
+    end
   end
   class Util
     def self.gator_files
       ["gator", "gator.rb"]
+    end
+
+    def self.ruby_file_loader
+      @ruby_file_loader ||= RubyFileLoader.new Gator::Sandbox
     end
 
     def self.gator_files_for(dir)
@@ -33,19 +38,8 @@ module Gator
       File.join(gator_root, "templates", "generators" )
     end
 
-    def self.load_rubyfile(path, content=nil, debug=false)
-      content ||= File.binread(path)
-
-      begin
-        Gator::Sandbox.module_eval(content, path)
-      rescue Exception => e
-        $stderr.puts "WARNING: unable to load file #{path.inspect}: #{e.message}"
-        if debug
-          $stderr.puts *e.backtrace
-        else
-          $stderr.puts e.backtrace.first
-        end
-      end
+    def self.load_rubyfile(path)
+      ruby_file_loader.exec_file path
     end
 
     def self.find_gator_project_file(path= Dir.getwd)
