@@ -30,8 +30,8 @@ module Gator
       File.join(Thor::Util.user_home, ".gator").gsub(/\\/, '/')
     end
 
-    def self.project_template_root
-      File.join(gator_root, "templates", "projects")
+    def self.scaffold_template_root
+      File.join(gator_root, "templates", "scaffolds")
     end
 
     def self.generator_template_root

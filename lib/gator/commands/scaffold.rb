@@ -3,18 +3,18 @@ require "thor/actions"
 require "fileutils"
 
 module Gator
-  class ProjectCommand < Command
+  class ScaffoldCommand < Command
     include Thor::Actions
     include Gator::Configuration
 
-    define :command => "project", :short => "p",
-           :usage => "project TASK", :description => "Set of tasks to manage project templates."
+    define :command => "scaffold", :short => "s",
+           :usage => "scaffold TASK", :description => "Set of tasks to manage scaffold templates."
 
     def self.source_root
-      Gator::Util.project_template_root
+      Gator::Util.scaffold_template_root
     end
 
-    desc "project install NAME TEMPLATE_NAME", "Install a project template."
+    desc "scaffold install NAME TEMPLATE_NAME", "Install a scaffold template."
     def install( dir, template=nil )
       entries = directory_entries dir
       template ||= File.expand_path( File.dirname(entries.first) ).split(File::SEPARATOR).last
@@ -23,23 +23,23 @@ module Gator
       create_empty_directory_files template_dir(template)
     end
 
-    desc "project uninstall TEMPLATE_NAME", "Uninstall a project template."
+    desc "scaffold uninstall TEMPLATE_NAME", "Uninstall a scaffold template."
     def uninstall( template )
       FileUtils.rm_r template_dir(template)
     end
 
-    desc "project new NAME TEMPLATE_NAME", "Create a new project by template."
+    desc "scaffold new NAME TEMPLATE_NAME", "Create a new scaffold by template."
     def new( name, template )
-      @project_name = name
+      @scaffold_name = name
       directory template_dir(template), File.expand_path( name )
     end
 
-    desc "project wipe", "Delete all project templates."
+    desc "scaffold wipe", "Delete all scaffold templates."
     def wipe
       template_root_entries(true).each { |e| FileUtils.rm_r e }
     end
 
-    desc "project list [SEARCH]", "Lists project templates."
+    desc "scaffold list [SEARCH]", "Lists scaffold templates."
     def list(search=nil)
       entries = template_root_entries
       entries = entries.select { |e| e.include?(search) } unless search.nil?
@@ -49,8 +49,8 @@ module Gator
 
     no_tasks {
 
-      def project_name
-        @project_name
+      def scaffold_name
+        @scaffold_name
       end
 
       def configuration
@@ -68,7 +68,7 @@ module Gator
     end
 
     def template_dir( template )
-      File.join( Gator::Util.project_template_root, template )
+      File.join( Gator::Util.scaffold_template_root, template )
     end
 
     def directory_entries( dir, join_with_dir=true )
@@ -80,7 +80,7 @@ module Gator
     end
 
     def template_root_entries( join_with_dir=false )
-      directory_entries Gator::Util.project_template_root, join_with_dir
+      directory_entries Gator::Util.scaffold_template_root, join_with_dir
     end
 
   end
