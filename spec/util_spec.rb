@@ -17,8 +17,8 @@ describe Gator::Util do
     Gator::Util.gator_root.should == File.join(File.expand_path("~"), ".gator")
   end
 
-  it "should provide the correct project template directory" do
-    Gator::Util.scaffold_template_root.should == File.join(Gator::Util.gator_root, "templates", "projects")
+  it "should provide the correct scaffolds template directory" do
+    Gator::Util.scaffold_template_root.should == File.join(Gator::Util.gator_root, "templates", "scaffolds")
   end
 
   it "should load a rubyfile correctly"
