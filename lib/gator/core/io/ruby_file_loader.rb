@@ -1,4 +1,5 @@
-class RubyFileLoader
+class Gator
+  class RubyFileLoader
 
   def initialize sandbox
     @sandbox = sandbox
@@ -16,4 +17,5 @@ class RubyFileLoader
 		sandbox.module_eval( code )
   end
 
+  end
 end

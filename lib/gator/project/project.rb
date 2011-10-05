@@ -12,7 +12,7 @@ class Gator
 
       #project.path(:source,:main,:as3)
       def path(*args)
-        File.join(Gator::Util.find_gator_project, layout.expand(*args))
+        File.join(Gator::Util.find_project_dir, layout.expand(*args))
       end
 
       def options
