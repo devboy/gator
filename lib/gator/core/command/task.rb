@@ -1,7 +1,4 @@
-require "thor/group"
-require "thor/actions"
-
-module Gator
+class Gator
   class Task < Thor::Group
     include ActAsCommand
     include Thor::Actions

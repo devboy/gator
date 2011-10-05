@@ -1,4 +1,4 @@
-module Gator
+class Gator
   module Project
     class Base
       include Gator::Configuration::ActAsConfiguration
@@ -10,6 +10,7 @@ module Gator
         @layout = Layout.default
       end
 
+      #project.path(:source,:main,:as3)
       def path(*args)
         File.join(Gator::Util.find_gator_project, layout.expand(*args))
       end

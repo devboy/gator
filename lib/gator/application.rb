@@ -1,4 +1,4 @@
-module Gator
+class Gator
 
   class GatorConfiguration
     include Gator::Configuration::ActAsConfiguration

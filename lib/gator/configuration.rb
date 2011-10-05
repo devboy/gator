@@ -1,4 +1,4 @@
-module Gator
+class Gator
   module Configuration
     module ActAsConfiguration
 
@@ -8,8 +8,7 @@ module Gator
           instance_variable_set("@#{name}", val)
         end
 
-        create_method name do |
-          &block |
+        create_method name do | &block |
           block.call(instance_variable_get("@#{name}")) if block
           instance_variable_get("@#{name}")
         end

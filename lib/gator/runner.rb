@@ -2,7 +2,7 @@ require 'thor'
 require 'thor/group'
 require 'thor/actions'
 
-module Gator
+class Gator
   class Runner < Command
     include Thor::Actions
 

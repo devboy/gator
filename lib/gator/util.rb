@@ -3,7 +3,7 @@ require "thor/util"
 require "thor/actions"
 require "pathname"
 
-module Gator
+class Gator
   module Sandbox
     def self.gator
       Gator.application
