@@ -1,6 +1,5 @@
 class Gator
-  module Configuration
-    module ActAsConfiguration
+  module ActAsConfiguration
 
       def add_configuration(name, val=nil)
 
@@ -23,5 +22,4 @@ class Gator
       end
 
     end
-  end
 end
