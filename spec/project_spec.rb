@@ -7,7 +7,7 @@ describe Gator::Project do
 
 end
 
-describe Gator::Project::Layout do
+describe Gator::Layout do
 
   it "should have some tests"
   it "could be the tests from the buildr project"

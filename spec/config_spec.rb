@@ -6,9 +6,3 @@ describe Gator::Configuration do
   it "should have some tests"
 
 end
-
-describe Gator::GatorConfiguration do
-
-  it "should have some tests"
-
-end

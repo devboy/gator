@@ -1,7 +1,7 @@
 class Gator
   class ProjectFileLoader < RubyFileLoader
 
-    def load path=Dir.getwd
+    def load_file path=Dir.getwd
       file = find_project_file path
       exec_file file unless file.nil?
       self

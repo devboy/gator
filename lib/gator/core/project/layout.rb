@@ -1,5 +1,4 @@
 class Gator
-  module Project
     # THIS CLASS IS FROM BUILDR => buildr.apache.org
     # Symbolic mapping for directory layout.  Used for both the default and custom layouts.
     #
@@ -87,4 +86,3 @@ class Gator
 
     end
   end
-end
