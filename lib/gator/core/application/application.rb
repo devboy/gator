@@ -30,8 +30,7 @@ class Gator
       end
 
       def load_project
-
-        puts "load_project", ProjectFileLoader.new(Gator::Sandbox).load_file
+        ProjectFileLoader.new(Gator::Sandbox).load_file
       end
 
     }

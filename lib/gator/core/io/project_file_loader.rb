@@ -1,4 +1,5 @@
 class Gator
+  require 'pathname'
   class ProjectFileLoader < RubyFileLoader
 
     def load_file path=Dir.getwd
