@@ -5,7 +5,7 @@ require "fileutils"
 class Gator
   class ScaffoldCommand < Command
     include Thor::Actions
-    include Gator::Configuration
+    #include Gator::Configuration
 
     define :command => "scaffold", :short => "s",
            :usage => "scaffold TASK", :description => "Set of tasks to manage scaffold templates."
@@ -62,7 +62,7 @@ class Gator
     private
 
     def create_empty_directory_files( dir )
-      Dir.glob( File.join( dir, "**", "*" ) ).each {|f|
+      Dir.glob( File.join( dir, "**", "*" ) ).each { |f|
         create_file File.join(f,".empty_directory"), ".empty_directory" if File.directory?(f) && Dir.entries(f).length == 2
       }
     end
