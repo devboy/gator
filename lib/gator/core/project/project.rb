@@ -10,7 +10,7 @@ class Gator
     end
 
     def path(*args)
-      File.join(Gator::Util.find_project_dir, layout.expand(*args))
+      File.join( Gator::Util.find_project_dir, layout.expand(*args) )
     end
 
     def template_roots

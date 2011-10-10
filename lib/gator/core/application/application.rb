@@ -2,16 +2,16 @@ class Gator
   class Application < Command
     include Thor::Actions
 
-    def initialize(*args)
-      bootstrap
-      super
-    end
 
     desc "version", "Show Gator version"
-
     def version
       version_file = File.dirname(__FILE__) + '/../../VERSION'
       say File.exist?(version_file) ? File.read(version_file) : ""
+    end
+
+    def initialize(*args)
+      bootstrap
+      super
     end
 
     no_tasks {
@@ -30,7 +30,8 @@ class Gator
       end
 
       def load_project
-        ProjectFileLoader.new(Gator::Sandbox).load_file
+        file = Gator::Paths.project_file
+        RubyFileLoader.new(Gator::Sandbox).exec_file file unless file.nil?
       end
 
     }

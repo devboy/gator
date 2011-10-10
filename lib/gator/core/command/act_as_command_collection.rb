@@ -18,6 +18,8 @@ class Gator
         subcommand_classes[d[:command]] = klass
         klass.parent_command = self
       end
+      alias :<< :register_subcommand
+
 
       def get_subcommand(*args)
         klass = self

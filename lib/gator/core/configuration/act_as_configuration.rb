@@ -1,7 +1,7 @@
 class Gator
   module ActAsConfiguration
 
-      def add_configuration(name, val=nil)
+      def add_property(name, val=nil)
 
         create_method "#{name.to_s}=" do |val|
           instance_variable_set("@#{name}", val)

@@ -1,20 +1,12 @@
 class Gator
   require 'pathname'
-  class ProjectFileLoader < RubyFileLoader
-
-    def load_file path=Dir.getwd
-      file = find_project_file path
-      exec_file file unless file.nil?
-      self
-    end
-
-    private
+  class ProjectFileLocator
 
     def project_files
       ["gator", "gator.rb"]
     end
 
-    def project_file_paths dir
+    def project_file_paths(dir)
       project_files.collect { |f| File.join(dir, f) }
     end
 
