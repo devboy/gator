@@ -1,4 +1,4 @@
-module Gator
+class Gator
   class Generator < Task
     def init
     end

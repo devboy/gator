@@ -1,1 +1,1 @@
-p self.gator
+p gator

@@ -1,15 +1,13 @@
-module Gator
-  module Configuration
-    module ActAsConfiguration
+class Gator
+  module ActAsConfiguration
 
-      def add_configuration(name, val=nil)
+      def add_property(name, val=nil)
 
         create_method "#{name.to_s}=" do |val|
           instance_variable_set("@#{name}", val)
         end
 
-        create_method name do |
-          &block |
+        create_method name do | &block |
           block.call(instance_variable_get("@#{name}")) if block
           instance_variable_get("@#{name}")
         end
@@ -24,5 +22,4 @@ module Gator
       end
 
     end
-  end
 end

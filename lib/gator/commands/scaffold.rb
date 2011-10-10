@@ -2,7 +2,7 @@ require "thor"
 require "thor/actions"
 require "fileutils"
 
-module Gator
+class Gator
   class ScaffoldCommand < Command
     include Thor::Actions
     include Gator::Configuration

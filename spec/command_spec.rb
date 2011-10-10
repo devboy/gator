@@ -15,13 +15,26 @@ class CommandC < Gator::Command
   :usage => "c", :description => "c"
 end
 
+class TaskA < Gator::Task
+
+  define :command => "task", :short => "task",
+         :usage => "task", :description => "task"
+end
+
+class TaskB < Gator::Task
+
+  define :command => "taskB", :short => "taskB",
+         :usage => "taskB", :description => "taskB"
+end
+
 class SpecCollection < Gator::Command
   define :command => "collection", :short => "c",
-         :usage => "collection", :description => "collection"
+  :usage => "collection", :description => "collection"
 
   register_subcommand CommandA
   CommandA.register_subcommand CommandB
   register_subcommand CommandC
+  register_subcommand TaskA
 end
 
 describe Gator::ActAsCommand do
@@ -36,8 +49,34 @@ describe Gator::ActAsCommand do
   it "should have the correct parent" do
     CommandB.parent.should == CommandA
     CommandA.parent.should == SpecCollection
-    CommandC.parent.should == SpecCollection
     SpecCollection.parent.should == nil
+    TaskA.parent.should == SpecCollection
+    TaskB.parent.should == nil
+  end
+
+  it "should contain the correct definition instance method" do
+    CommandA.new.definition[:command].should == "a"
+    CommandA.new.definition[:short].should == "a"
+    CommandA.new.definition[:usage].should == "a"
+    CommandA.new.definition[:description].should == "a"
+  end
+
+  it "should have the correct parent instance method" do
+    CommandB.new.parent.should == CommandA
+    CommandA.new.parent.should == SpecCollection
+    SpecCollection.new.parent.should == nil
+  end
+
+  it "should return nil for a subcommand request" do
+    TaskA.new.get_subcommand("a").should be nil
+  end
+
+  it "should return nil for resolve_subcommand when it doesn't have a parent" do
+    TaskB.new.resolve_subcommand("a").should be nil
+  end
+
+  it "should return the correct subcommand for resolve_subcommand" do
+    TaskA.new.resolve_subcommand(["collection"]).should be SpecCollection
   end
 
 end
@@ -79,6 +118,13 @@ end
 describe Gator::Command do
 
   it "should be covered by Gator::ActAsCommandCollection & Gator::ActAsCommand" do
+  end
+
+end
+
+describe Gator::Task do
+
+  it "should be covered by Gator::ActAsCommand" do
   end
 
 end
