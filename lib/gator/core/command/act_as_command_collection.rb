@@ -18,6 +18,7 @@ class Gator
         subcommand_classes[d[:command]] = klass
         klass.parent_command = self
       end
+
       alias :<< :register_subcommand
 
 
@@ -32,18 +33,20 @@ class Gator
 
       def resolve_subcommand(command, fallback=nil)
 
-        parent_klass = self
-        klass = parent_klass.get_subcommand *command
+        subcommand = get_subcommand *command
+        return subcommand unless subcommand.nil?
 
-        return klass unless klass.nil?
-
-        while parent_klass.parent
-          parent_klass = parent_klass.parent
-          klass = parent_klass.get_subcommand *command
-          return klass unless klass.nil?
+        if command.respond_to?(:first) && command.first == definition[:command]
+          command_stripped = command.dup
+          command_stripped.shift
+          subcommand = command_stripped.empty? ? self : get_subcommand(*command_stripped)
+          return subcommand unless subcommand.nil?
         end
 
-        resolve_subcommand fallback if fallback
+        subcommand = parent.resolve_subcommand command unless parent.nil?
+        return subcommand unless subcommand.nil?
+
+        resolve_subcommand fallback unless fallback.nil?
       end
 
     end
