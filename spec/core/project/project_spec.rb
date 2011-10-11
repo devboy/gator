@@ -19,10 +19,25 @@ describe Gator::Project do
 
   it "should have a name property" do
     @project.should respond_to(:name)
-    end
+  end
+
+  it "should set and get the name property" do
+    @project.name= "MyProject"
+    @project.name.should == "MyProject"
+  end
 
   it "should have a layout property" do
     @project.should respond_to(:layout)
+  end
+
+  it "should set and get the layout property" do
+    layout = Gator::Layout.new
+    @project.layout= layout
+    @project.layout.should equal layout
+  end
+
+  it "should initially have the default layout" do
+    @project.layout.should equal Gator::Layout.default
   end
 
   it "should initially have an empty array of template roots" do
