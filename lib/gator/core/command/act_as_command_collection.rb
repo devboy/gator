@@ -51,5 +51,13 @@ class Gator
 
     end
 
+    def get_subcommand(*args)
+      self.class.get_subcommand *args
+    end
+
+    def resolve_subcommand(command, fallback=nil)
+      self.class.resolve_subcommand command, fallback
+    end
+
   end
 end

@@ -76,6 +76,42 @@ describe Gator::Command do
 
   describe "InstanceMethods" do
 
+    before :each do
+      @command_a = CommandA.new
+      @command_b = CommandB.new
+      @command_c = CommandC.new
+      @command_d = CommandD.new
+    end
+
+     it "should provide the correct subcommands" do
+      @command_a.get_subcommand("CommandB").should equal CommandB
+      @command_a.get_subcommand("CommandC").should equal CommandC
+    end
+
+    it "should provide the correct nested subcommands" do
+      @command_a.get_subcommand("CommandC", "CommandD").should equal CommandD
+    end
+
+    it "should return nil if a command cannot be found" do
+      @command_a.get_subcommand("CommandZ").should_not be
+    end
+
+    it "should resolve the correct subcommand on a parent" do
+      @command_a.resolve_subcommand(["CommandA"]).should == CommandA
+    end
+
+    it "should resolve the correct nested subcommand on a parent" do
+      @command_d.resolve_subcommand(["CommandA", "CommandB"]).should == CommandB
+    end
+
+    it "should fall back to CommandB" do
+      @command_c.resolve_subcommand(["CommandA", "CommandD"], ["CommandA", "CommandB"]).should == CommandB
+    end
+
+    it "should return nil if a command cannot be resolved" do
+      @command_c.resolve_subcommand("d").should == nil
+    end
+
   end
 
 end
