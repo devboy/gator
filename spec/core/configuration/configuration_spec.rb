@@ -1,17 +1,15 @@
-require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
-
-
-class ConcreteConfiguration < Gator::Configuration
-end
+require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
 
 describe Gator::Configuration do
 
-  it "should be covered by ActAsConfiguration spec" do
+  before :all do
+    class ConcreteConfiguration < Gator::Configuration
+    end
   end
 
-end
-
-describe Gator::ActAsConfiguration do
+  after :all do
+    remove_const ConcreteConfiguration
+  end
 
   before :each do
     @configuration = ConcreteConfiguration.new
