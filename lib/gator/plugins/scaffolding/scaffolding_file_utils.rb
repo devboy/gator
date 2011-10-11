@@ -36,12 +36,13 @@ class Gator
       end
 
       def install_scaffold from_dir, name=nil
-        name ||= file_util.last_directory_name from_dir
-        entries = file_util.directory_entries from_dir
+        name ||= last_directory_name from_dir
+        entries = directory_entries from_dir
         install_dir = scaffold_directory(name)
-        empty_directory install_dir
+        #empty_directory install_dir
+        FileUtils.mkdir_p install_dir
         FileUtils.cp_r entries, install_dir
-        file_util.create_empty_directory_files install_dir
+        create_empty_directory_files install_dir
       end
 
       def delete_scaffold name

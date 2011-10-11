@@ -16,7 +16,7 @@ class Gator
 
       desc "scaffold install NAME TEMPLATE_NAME", "Install a scaffold template."
       def install(dir, name=nil)
-        file_util.install_scaffold File.expand_path(dir), name
+        file_util.install_scaffold dir, name
       end
 
       desc "scaffold uninstall TEMPLATE_NAME", "Uninstall a scaffold template."

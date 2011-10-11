@@ -20,13 +20,13 @@ describe Gator::Scaffolding::ScaffoldCommand do
 
   it "should install a scaffold with path & name" do
     path, name = "myPath", "myName"
-    @file_util.should_receive(:install_scaffold).with File.expand_path(path), name
+    @file_util.should_receive(:install_scaffold).with path, name
     @scaffold_command.install(path, name)
     end
 
   it "should install a scaffold with path only" do
     path = "myName"
-    @file_util.should_receive(:install_scaffold).with File.expand_path(path), nil
+    @file_util.should_receive(:install_scaffold).with path, nil
     @scaffold_command.install(path)
   end
 
