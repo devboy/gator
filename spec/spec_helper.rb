@@ -5,7 +5,7 @@ unless defined?(SpecHelpers)
 
   SimpleCov.formatter = SimpleCov::Formatter::RcovFormatter
   SimpleCov.root(  File.dirname( __FILE__) + '/../' )
-  puts SimpleCov.root
+  SimpleCov.coverage_dir( File.join( "test", "coverage" ) )
   SimpleCov.start
 
   require File.dirname(__FILE__)+'/../lib/gator'
