@@ -1,6 +1,9 @@
+require 'fileutils'
+
 class Gator
   module Scaffolding
     class ScaffoldingFileUtils
+      include Thor::Actions
 
       def scaffolds_home
         File.join(Gator::Paths.gator_home, "scaffolds")
@@ -30,6 +33,23 @@ class Gator
         Dir.glob(File.join(dir, "**", "*")).each { |f|
           create_file File.join(f, ".empty_directory"), ".empty_directory" if File.directory?(f) && Dir.entries(f).length == 2
         }
+      end
+
+      def install_scaffold from_dir, name=nil
+        name ||= file_util.last_directory_name from_dir
+        entries = file_util.directory_entries from_dir
+        install_dir = scaffold_directory(name)
+        empty_directory install_dir
+        FileUtils.cp_r entries, install_dir
+        file_util.create_empty_directory_files install_dir
+      end
+
+      def delete_scaffold name
+        FileUtils.rm_r scaffold_directory(name)
+      end
+
+      def delete_all_scaffolds
+        scaffold_entries.each { |scaffold| delete_scaffold(scaffold) }
       end
 
     end

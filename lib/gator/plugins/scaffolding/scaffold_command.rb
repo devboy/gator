@@ -16,17 +16,12 @@ class Gator
 
       desc "scaffold install NAME TEMPLATE_NAME", "Install a scaffold template."
       def install(dir, name=nil)
-        entries = file_util.directory_entries dir
-        name ||= file_util.last_directory_name dir
-        install_dir = file_util.scaffold_directory(name)
-        empty_directory install_dir
-        FileUtils.cp_r entries, install_dir
-        file_util.create_empty_directory_files install_dir
+        file_util.install_scaffold File.expand_path(dir), name
       end
 
       desc "scaffold uninstall TEMPLATE_NAME", "Uninstall a scaffold template."
-      def uninstall(template)
-        FileUtils.rm_r file_util.scaffold_directory(template)
+      def uninstall( scaffold )
+        file_util.delete_scaffold scaffold
       end
 
       desc "scaffold new NAME TEMPLATE_NAME", "Create a new scaffold by template."
@@ -37,7 +32,7 @@ class Gator
 
       desc "scaffold wipe", "Delete all scaffold templates."
       def wipe
-        file_util.scaffold_entries(true).each { |e| FileUtils.rm_r e }
+        file_util.delete_all_scaffolds
       end
 
       desc "scaffold list [SEARCH]", "Lists scaffold templates."
