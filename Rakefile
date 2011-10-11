@@ -35,12 +35,6 @@ RSpec::Core::RakeTask.new(:spec) do |spec|
 end
 
 task :spec => "ci:setup:rspec"
-
-#RSpec::Core::RakeTask.new(:rcov) do |spec|
-#  spec.pattern = 'spec/**/*_spec.rb'
-#  spec.rcov = true
-#end
-
 task :test => :spec
 task :default => :spec
 
