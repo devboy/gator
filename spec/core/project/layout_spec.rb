@@ -1,21 +1,4 @@
-require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
-
-
-describe Gator::Project do
-
-  before :each do
-    @project = Gator::Project.new
-  end
-
-  it "should have a name property" do
-    @project.should respond_to(:name)
-    end
-
-  it "should have a layout property" do
-    @project.should respond_to(:layout)
-  end
-
-end
+require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
 
 describe Gator::Layout do
 
