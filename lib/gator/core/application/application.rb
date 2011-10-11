@@ -1,7 +1,9 @@
+require 'singleton'
+
 class Gator
   class Application < Command
+    #include Singleton
     include Thor::Actions
-
 
     desc "version", "Show Gator version"
     def version
@@ -17,10 +19,7 @@ class Gator
     no_tasks {
 
       def bootstrap
-        application = self
-        Gator::Sandbox.class.send(:define_method, :gator) do
-          application
-        end
+        Gator::Sandbox.add_getter :gator, self
         load_configuration
         load_project
       end
