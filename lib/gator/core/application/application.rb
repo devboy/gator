@@ -26,13 +26,13 @@ class Gator
 
       def load_configuration
         file = Gator::Paths.env_file
-        say "No environment file (env.rb) could be found in gator home directory.", :yellow unless File.exist? file
+        say "No environment file (env.rb) could be found in gator home directory.(#{Gator::Paths.gator_home})", :yellow unless File.exist? file
         RubyFileLoader.new(Gator::Sandbox).exec_file file if File.exist? file
       end
 
       def load_project
         file = Gator::Paths.project_file
-        say "No project file (gator.rb) could be found in this directory.", :yellow if file.nil?
+        say "No project file (gator.rb) could be found in this directory.(#{Dir.pwd})", :yellow if file.nil?
         RubyFileLoader.new(Gator::Sandbox).exec_file file unless file.nil?
       end
 
