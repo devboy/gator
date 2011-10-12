@@ -16,34 +16,40 @@ describe Gator::Configuration do
   end
 
   it "should add a property getter" do
-    @configuration.add_property :my_prop
+    @configuration.add_configuration :my_prop
     @configuration.should respond_to "my_prop"
   end
 
   it "should add a property setter" do
-    @configuration.add_property :my_prop
+    @configuration.add_configuration :my_prop
     @configuration.should respond_to "my_prop="
   end
 
   it "should set and get a property via its setter" do
     a = {}
-    @configuration.add_property :a
+    @configuration.add_configuration :a
     @configuration.a= a
     @configuration.a.should eql(a)
   end
 
   it "should add a value" do
     a = {}
-    @configuration.add_property :my_prop, a
+    @configuration.add_configuration :my_prop, a
     @configuration.my_prop.should eql(a)
   end
 
   it "should yield around a property" do
     a = {}
-    @configuration.add_property :my_prop, a
+    @configuration.add_configuration :my_prop, a
     @configuration.my_prop do |property|
       property.should eql(a)
     end
+  end
+
+  it "should add a getter with a value" do
+    a = {}
+    @configuration.add_getter :my_getter, a
+    @configuration.my_getter.should equal a
   end
 
 end

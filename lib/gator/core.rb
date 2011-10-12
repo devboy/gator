@@ -15,4 +15,5 @@ require File.expand_path( File.dirname(__FILE__) + '/core/project/layout' )
 require File.expand_path( File.dirname(__FILE__) + '/core/project/project' )
 
 require File.expand_path( File.dirname(__FILE__) + '/core/application/application' )
+require File.expand_path( File.dirname(__FILE__) + '/core/application/application_configuration' )
 

@@ -19,17 +19,20 @@ class Gator
     no_tasks {
 
       def bootstrap
-        Gator::Sandbox.add_getter :gator, self
+        Gator::Sandbox.add_getter :gator, Gator::ApplicationConfiguration.new
         load_configuration
         load_project
       end
 
       def load_configuration
-        say "Configuration loading skipped."
+        file = Gator::Paths.env_file
+        say "No environment file (env.rb) could be found in gator home directory.", :yellow unless File.exist? file
+        RubyFileLoader.new(Gator::Sandbox).exec_file file if File.exist? file
       end
 
       def load_project
         file = Gator::Paths.project_file
+        say "No project file (gator.rb) could be found in this directory.", :yellow if file.nil?
         RubyFileLoader.new(Gator::Sandbox).exec_file file unless file.nil?
       end
 

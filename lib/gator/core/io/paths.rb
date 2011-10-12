@@ -3,6 +3,10 @@ class Gator
 
     def self.gator_home
       File.join(Thor::Util.user_home, ".gator").gsub(/\\/, '/')
+      end
+
+    def self.env_file
+      File.join gator_home, "environment.rb"
     end
 
     def self.project_home
