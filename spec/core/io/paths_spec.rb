@@ -23,7 +23,7 @@ describe Gator::Paths do
   end
 
   it "should point to the correct environment file" do
-    Gator::Paths.gator_env_file == File.join( Gator::Paths.gator_home, "environment.rb" )
+    Gator::Paths.env_file == File.join( Gator::Paths.gator_home, "environment.rb" )
   end
 
   it "should return nil for project base directory when not in a project directory" do
