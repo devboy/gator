@@ -7,7 +7,7 @@ class Gator
 
     desc "version", "Show Gator version"
     def version
-      version_file = File.dirname(__FILE__) + '/../../VERSION'
+      version_file = File.dirname(__FILE__) + '/../../../../VERSION'
       say File.exist?(version_file) ? File.read(version_file) : ""
     end
 
