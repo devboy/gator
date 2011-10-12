@@ -3,3 +3,5 @@
 Gemfile.lock
 *.gem
 test/report/*.xml
+.DS_Store
+test/
