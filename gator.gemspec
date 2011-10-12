@@ -4,15 +4,14 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
-  s.name = %q{gator}
-  s.version = "0.0.16.pre"
+  s.name = "gator"
+  s.version = "0.0.22.pre"
 
   s.required_rubygems_version = Gem::Requirement.new("> 1.3.1") if s.respond_to? :required_rubygems_version=
   s.authors = ["Dominic Graefen"]
-  s.date = %q{2011-07-11}
-  s.default_executable = %q{gator}
-  s.description = %q{gator - the friendly code-generator}
-  s.email = %q{dominic.graefen@gmail.com}
+  s.date = "2011-10-12"
+  s.description = "gator - the friendly code-generator"
+  s.email = "dominic.graefen@gmail.com"
   s.executables = ["gator"]
   s.extra_rdoc_files = [
     "LICENSE.txt",
@@ -29,29 +28,51 @@ Gem::Specification.new do |s|
     "bin/gator",
     "gator.gemspec",
     "lib/gator.rb",
-    "lib/gator/command.rb",
-    "lib/gator/commands.rb",
-    "lib/gator/commands/generate.rb",
-    "lib/gator/commands/project.rb",
-    "lib/gator/config.rb",
-    "lib/gator/project.rb",
-    "lib/gator/runner.rb",
-    "lib/gator/task.rb",
-    "lib/gator/util.rb",
-    "spec/command_spec.rb",
-    "spec/config_spec.rb",
+    "lib/gator/core.rb",
+    "lib/gator/core/application/application.rb",
+    "lib/gator/core/application/application_configuration.rb",
+    "lib/gator/core/command/act_as_command.rb",
+    "lib/gator/core/command/act_as_command_collection.rb",
+    "lib/gator/core/command/command.rb",
+    "lib/gator/core/command/task.rb",
+    "lib/gator/core/configuration/act_as_configuration.rb",
+    "lib/gator/core/configuration/configuration.rb",
+    "lib/gator/core/io/paths.rb",
+    "lib/gator/core/io/project_file_locator.rb",
+    "lib/gator/core/io/ruby_file_loader.rb",
+    "lib/gator/core/io/sandbox.rb",
+    "lib/gator/core/project/layout.rb",
+    "lib/gator/core/project/project.rb",
+    "lib/gator/plugins/generators.rb",
+    "lib/gator/plugins/generators/act_as_template_generator.rb",
+    "lib/gator/plugins/generators/generate_command.rb",
+    "lib/gator/plugins/generators/generator.rb",
+    "lib/gator/plugins/scaffolding.rb",
+    "lib/gator/plugins/scaffolding/scaffold_command.rb",
+    "lib/gator/plugins/scaffolding/scaffolding_file_utils.rb",
+    "rake/jeweler.rb",
+    "rake/jeweler_prerelease_tasks.rb",
+    "rake/pre_release_gemspec.rb",
+    "rake/pre_release_to_git.rb",
+    "spec/core/application/application_configuration_spec.rb",
+    "spec/core/application/application_spec.rb",
+    "spec/core/command/command_spec.rb",
+    "spec/core/command/task_spec.rb",
+    "spec/core/configuration/configuration_spec.rb",
+    "spec/core/io/paths_spec.rb",
+    "spec/core/io/sandbox_spec.rb",
+    "spec/core/project/layout_spec.rb",
+    "spec/core/project/project_spec.rb",
     "spec/fixtures/empty_gator_project/gator.rb",
-    "spec/project_spec.rb",
-    "spec/runner_spec.rb",
-    "spec/spec_helper.rb",
-    "spec/task_spec.rb",
-    "spec/util_spec.rb"
+    "spec/fixtures/no_gator_file/.empty_directory",
+    "spec/plugins/scaffolding/scaffold_command_spec.rb",
+    "spec/spec_helper.rb"
   ]
-  s.homepage = %q{http://github.com/devboy/gator}
+  s.homepage = "http://github.com/devboy/gator"
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.6.2}
-  s.summary = %q{gator - the friendly code-generator}
+  s.rubygems_version = "1.8.10"
+  s.summary = "gator - the friendly code-generator"
 
   if s.respond_to? :specification_version then
     s.specification_version = 3
@@ -62,14 +83,16 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<ci_reporter>, ["~> 1.6.5"])
       s.add_development_dependency(%q<bundler>, ["~> 1.0.0"])
       s.add_development_dependency(%q<jeweler>, ["~> 1.6.2"])
-      s.add_development_dependency(%q<rcov>, [">= 0"])
+      s.add_development_dependency(%q<simplecov>, [">= 0"])
+      s.add_development_dependency(%q<simplecov-rcov>, [">= 0"])
     else
       s.add_dependency(%q<thor>, ["~> 0.14.6"])
       s.add_dependency(%q<rspec>, ["~> 2.3.0"])
       s.add_dependency(%q<ci_reporter>, ["~> 1.6.5"])
       s.add_dependency(%q<bundler>, ["~> 1.0.0"])
       s.add_dependency(%q<jeweler>, ["~> 1.6.2"])
-      s.add_dependency(%q<rcov>, [">= 0"])
+      s.add_dependency(%q<simplecov>, [">= 0"])
+      s.add_dependency(%q<simplecov-rcov>, [">= 0"])
     end
   else
     s.add_dependency(%q<thor>, ["~> 0.14.6"])
@@ -77,7 +100,8 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<ci_reporter>, ["~> 1.6.5"])
     s.add_dependency(%q<bundler>, ["~> 1.0.0"])
     s.add_dependency(%q<jeweler>, ["~> 1.6.2"])
-    s.add_dependency(%q<rcov>, [">= 0"])
+    s.add_dependency(%q<simplecov>, [">= 0"])
+    s.add_dependency(%q<simplecov-rcov>, [">= 0"])
   end
 end
 
