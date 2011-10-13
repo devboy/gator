@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "gator"
-  s.version = "0.0.22.pre"
+  s.version = "0.0.23.pre"
 
   s.required_rubygems_version = Gem::Requirement.new("> 1.3.1") if s.respond_to? :required_rubygems_version=
   s.authors = ["Dominic Graefen"]
-  s.date = "2011-10-12"
+  s.date = "2011-10-13"
   s.description = "gator - the friendly code-generator"
   s.email = "dominic.graefen@gmail.com"
   s.executables = ["gator"]
