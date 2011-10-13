@@ -2,7 +2,9 @@ require 'singleton'
 
 class Gator
   class Application < Command
-    #include Singleton
+
+    define :command => "gator"
+
     include Thor::Actions
 
     desc "version", "Show Gator version"
