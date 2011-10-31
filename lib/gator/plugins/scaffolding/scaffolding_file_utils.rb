@@ -31,7 +31,7 @@ class Gator
 
       def create_empty_directory_files dir
         Dir.glob(File.join(dir, "**", "*")).each { |f|
-          create_file File.join(f, ".empty_directory"), ".empty_directory" if File.directory?(f) && Dir.entries(f).length == 2
+          File.open( File.join(f, ".empty_directory"), 'w' ) if File.directory?(f) && Dir.entries(f).length == 2
         }
       end
 
