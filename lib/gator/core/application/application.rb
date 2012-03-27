@@ -1,5 +1,3 @@
-require 'singleton'
-
 class Gator
   class Application < Command
 
